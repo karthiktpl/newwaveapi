@@ -1,0 +1,30 @@
+{
+  "name": "newwaveapi",
+  "version": "1.0.0",
+  "description": "newwave api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "test": "SET NODE_ENV=test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-karthiktpl:karthiktpl/newwaveapi.git"
+  },
+  "author": "karthik Narayanan",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.14",
+    "uuid": "^8.3.2"
+  }
+}
