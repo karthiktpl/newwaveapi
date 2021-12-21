@@ -1,27 +1,47 @@
-const sql = require("./db");
-
-const School = function (school){
-    this.name = school.name;
-    this.address = school.address;
-    this.email = school.email;
-    this.phone = school.phone;
-    this.fax = school.fax;
-    this.email = school.email;
-    this.created_by = 1;
-    // this.created_by = school.created_by;
-    //this.created_at = school.created_at;
-    this.status = school.status;
-};
-
-School.create = (newSchool, result) => {
-    sql.query("INSERT INTO schools SET ?", newSchool, (err, res) => {
-        if(err) {
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
-     /*    console.log("Created School : ", {id: res.insertId, ...newSchool }); */
-        result(null, {id: res.insertId, ...newSchool});
+const School = (sequelize, Sequelize) =>{
+    const school = sequelize.define("schools", {
+        id: {
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        name: {
+            type: Sequelize.STRING,
+            unique: true,
+            allowNull: false
+        },
+        alias: {
+            type: Sequelize.STRING,
+            unique: true,
+            allowNull: false
+        },
+        address: {
+            type: Sequelize.TEXT
+        },
+        email: {
+            type: Sequelize.STRING
+        },
+        phone: {
+            type: Sequelize.STRING
+        },
+        fax: {
+            type: Sequelize.STRING
+        },
+        folder_path: {
+            type: Sequelize.STRING
+        },
+        created_by: {
+            type: Sequelize.INTEGER
+        },
+        status: {
+            type: Sequelize.ENUM('ACTIVE', 'INACTIVE'),
+            defaultValue : 'ACTIVE'
+        } 
+    },
+    {
+        timestamps: 1
     });
-};
+    return school;
+}
+
 module.exports = School;
